@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "departamentos",
+  "info": {
+    "singularName": "departamento",
+    "pluralName": "departamentos",
+    "displayName": "Departamento",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "cargo": {
+      "type": "string"
+    },
+    "colaboradores": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::colaborador.colaborador",
+      "mappedBy": "departamento"
+    }
+  }
+}

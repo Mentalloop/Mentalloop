@@ -1,0 +1,43 @@
+@use '../variables'
+
+.menu-container, .menu-list
+  display: flex
+  flex-direction: column
+
+.menu-container
+  padding: variables.$spacing-lg
+  gap: variables.$spacing-xxl
+  background-color: variables.$color-bg-neutral-100
+  height: 100vh
+
+.menu-list 
+  gap: variables.$spacing-md
+
+.content-menu 
+  display: flex
+  align-items: center
+  gap: variables.$spacing-md
+  padding: variables.$spacing-md
+
+
+.menu-link 
+  display: flex
+  align-items: center
+  border-radius: variables.$border-radius-sm
+  
+
+
+  &:hover
+    background-color: variables.$color-primary-hover
+    color: variables.$color-primary
+    cursor: pointer
+
+  &.active
+    background-color: variables.$color-primary-hover
+    color: variables.$color-primary
+
+    // Se precisar alterar a cor dos ícones
+    svg
+      outline: variables.$color-primary
+
+  

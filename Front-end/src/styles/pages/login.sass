@@ -1,0 +1,40 @@
+@use '../variables'
+    
+.login-container 
+    width: 100%
+    height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+
+.login-content
+  display: flex
+  flex-direction: column
+  gap: variables.$spacing-lg
+  align-items: start
+  background: white
+  width: 480px
+  padding: variables.$spacing-xxl
+  border-radius: 8px
+
+.tabs
+  display: flex
+  border-bottom: 1px solid #ddd
+  width: 100%
+
+.tabs button
+  width: 100%
+  background: none
+  border: none
+  padding: 1rem
+  cursor: pointer
+  font-size: variables.$font-size-body-base
+  color: variables.$color-primary
+
+.tabs button.active
+  border-bottom: 2px solid variables.$color-primary
+  font-weight: bold
+
+.tabs button:not(.active)
+  color: #aaa
+

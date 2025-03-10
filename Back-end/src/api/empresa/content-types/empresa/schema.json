@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empresas",
+  "info": {
+    "singularName": "empresa",
+    "pluralName": "empresas",
+    "displayName": "Empresa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "senha": {
+      "type": "password"
+    },
+    "cnpj": {
+      "type": "biginteger"
+    },
+    "telefone": {
+      "type": "biginteger"
+    },
+    "colaboradors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::colaborador.colaborador",
+      "mappedBy": "empresa"
+    }
+  }
+}
