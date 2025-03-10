@@ -73,14 +73,14 @@ const ConteudoCompleto = () => {
     <div className="main-conteudo">
         <div className="conteudo-completo">
           <button onClick={() => navigate(-1)} className="back-button">
-            <ArrowLeft />
+           <ArrowLeft />
           </button>
           <div>
             <h3>{conteudo.titulo}</h3>
             <p>{conteudo.descricao}</p>
           </div>
           <button onClick={handlePlayPause} className="play-pause-button">
-                {isPlaying ? <Pause /> : <Play />}
+                 {isPlaying ? <Pause /> : <Play />}
           </button>
           {conteudo.audio?.url ? (
             <div className="audio-container">
