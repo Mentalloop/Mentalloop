@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Play, Pause } from 'lucide-react';
+import { ArrowBigLeft, Play, Pause } from 'lucide-react';
 import '../styles/pages/conteudos.sass'; // Importe o arquivo de estilos
 
 const ConteudoCompleto = () => {
@@ -73,7 +73,7 @@ const ConteudoCompleto = () => {
     <div className="main-conteudo">
         <div className="conteudo-completo">
           <button onClick={() => navigate(-1)} className="back-button">
-           <ArrowLeft />
+           <ArrowBigLeft />
           </button>
           <div>
             <h3>{conteudo.titulo}</h3>

@@ -1,4 +1,4 @@
-import { House, Book, Settings, LogOut, Network, Brain } from 'lucide-react';
+import { Home, Book, Settings, LogOut, Network, Brain } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
@@ -23,7 +23,7 @@ function Menu () {
         <ul className='menu-group'>
           <NavLink to="/Dashboard" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <House />
+              <Home />
               <p>Home</p>
             </div>
           </NavLink>
