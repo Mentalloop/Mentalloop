@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../variables'
 
 .btn
@@ -14,10 +15,10 @@
   border: none
 
   &:hover
-    background-color: scale-color( variables.$color-primary, $lightness: -10%)
+    background-color: color.scale(variables.$color-primary, $lightness: -10%)
 
   &:disabled
-    background-color: scale-color( variables.$color-primary, $lightness: 40%)
+    background-color: color.scale(variables.$color-primary, $lightness: 40%)
     cursor: not-allowed
 
 // Estilo para botões contornados
@@ -31,8 +32,8 @@
     color: white
 
   &:disabled
-    color: scale-color(variables.$color-primary, $lightness: 40%)
-    border-color: scale-color(variables.$color-primary, $lightness: 40%)
+    color: color.scale(variables.$color-primary, $lightness: 40%)
+    border-color: color.scale(variables.$color-primary, $lightness: 40%)
     cursor: not-allowed
 
 // Estilo para botões de texto
@@ -42,8 +43,8 @@
   border: none
 
   &:hover
-    background-color: scale-color(variables.$color-primary, $lightness: 40%)
+    background-color: color.scale(variables.$color-primary, $lightness: 40%)
 
   &:disabled
-    color: scale-color(variables.$color-primary, $lightness: 40%)
+    color: color.scale(variables.$color-primary, $lightness: 40%)
     cursor: not-allowed

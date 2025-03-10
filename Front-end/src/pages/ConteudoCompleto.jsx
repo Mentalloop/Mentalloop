@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Play, Pause } from 'lucide-react'; // Importe os ícones do Lucide
+import { ArrowLeft, Play, Pause } from 'lucide-react';
 import '../styles/pages/conteudos.sass'; // Importe o arquivo de estilos
 
 const ConteudoCompleto = () => {

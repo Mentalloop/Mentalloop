@@ -1,4 +1,4 @@
-import { House, Book, GraduationCap, Users, Settings, LogOut, Network, Brain } from 'lucide-react';
+import { House, Book, Settings, LogOut, Network, Brain } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
