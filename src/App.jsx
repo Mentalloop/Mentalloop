@@ -7,6 +7,7 @@ import ProtectedRoute from './context/ProtectedRoute'; // Importe o componente d
 import Conteudos from './pages/Conteudos'; // Importe o componente Conteudos
 import ConteudoCompleto from './pages/ConteudoCompleto'; // Importe o componente ConteudoCompleto
 import Organograma from './pages/Organograma'; // Importe o componente Organograma
+import Desenvolvimento from './pages/Desenvolvimento'; // Importe o componente Desenvolvimento
 
 const App = () => {
   return (
@@ -43,6 +44,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Organograma />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/desenvolvimento"
+            element={
+              <ProtectedRoute>
+                <Desenvolvimento />
               </ProtectedRoute>
             }
           />

@@ -549,6 +549,37 @@ export interface ApiEmpresaEmpresa extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTaskTask extends Struct.CollectionTypeSchema {
+  collectionName: 'tasks';
+  info: {
+    displayName: 'Task';
+    pluralName: 'tasks';
+    singularName: 'task';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data_de_inicio: Schema.Attribute.Date;
+    data_de_termino: Schema.Attribute.Date;
+    descricao: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::task.task'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    status_task: Schema.Attribute.Enumeration<
+      ['N\u00E3o iniciado', 'Em progresso', 'Conclu\u00EDdo']
+    >;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1063,6 +1094,7 @@ declare module '@strapi/strapi' {
       'api::conteudo.conteudo': ApiConteudoConteudo;
       'api::departamento.departamento': ApiDepartamentoDepartamento;
       'api::empresa.empresa': ApiEmpresaEmpresa;
+      'api::task.task': ApiTaskTask;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
