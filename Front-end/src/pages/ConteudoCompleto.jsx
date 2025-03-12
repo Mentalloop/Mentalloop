@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Play, Pause } from 'lucide-react';
+import {FaArrowLeft, FaPlay, FaPause} from  'react-icons/fa'
 import '../styles/pages/conteudos.sass'; // Importe o arquivo de estilos
 
 const ConteudoCompleto = () => {
@@ -73,14 +73,14 @@ const ConteudoCompleto = () => {
     <div className="main-conteudo">
         <div className="conteudo-completo">
           <button onClick={() => navigate(-1)} className="back-button">
-           <ArrowLeft />
+           <FaArrowLeft />
           </button>
           <div>
             <h3>{conteudo.titulo}</h3>
             <p>{conteudo.descricao}</p>
           </div>
           <button onClick={handlePlayPause} className="play-pause-button">
-                 {isPlaying ? <Pause /> : <Play />}
+                 {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
           {conteudo.audio?.url ? (
             <div className="audio-container">

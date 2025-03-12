@@ -1,4 +1,4 @@
-import { Home, Book, Settings, LogOut, Network, Brain } from 'lucide-react';
+import {FaHome, FaBook, FaCog, FaSignOutAlt, FaNetworkWired, FaBrain} from  'react-icons/fa'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
@@ -23,25 +23,25 @@ function Menu () {
         <ul className='menu-group'>
           <NavLink to="/Dashboard" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <Home />
+              <FaHome />
               <p>Home</p>
             </div>
           </NavLink>
           <NavLink to="/conteudos" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <Book />
+              <FaBook />
               <p>Conteúdos</p>
             </div>
           </NavLink>
           <NavLink to="/mentorias" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <Brain />
+              <FaBrain />
               <p>Desenvolvimento</p> 
             </div>
           </NavLink>
           <NavLink to="/organograma" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <Network />
+              <FaNetworkWired />
               <p>Orgonograma</p>
             </div>
           </NavLink>
@@ -53,13 +53,13 @@ function Menu () {
         <ul>
           <NavLink to="/configuracoes" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
-              <Settings />
+              <FaCog />
               <p>Configurações</p>
             </div>
           </NavLink>
           
         <div className="menu-link content-menu" onClick={handleLogout}> {/* Use handleLogout para deslogar */}
-          <LogOut />
+          <FaSignOutAlt />
           <p>Logout</p>
         </div>
         </ul>
