@@ -33,7 +33,7 @@ function Menu () {
               <p>Conteúdos</p>
             </div>
           </NavLink>
-          <NavLink to="/mentorias" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
+          <NavLink to="/desenvolvimento" className={({ isActive }) => isActive ? 'menu-link active' : 'menu-link'}>
             <div className='content-menu'>
               <FaBrain />
               <p>Desenvolvimento</p> 
