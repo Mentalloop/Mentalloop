@@ -1,0 +1,27 @@
+@use '../variables'
+
+.task-container
+    display: flex
+    flex-direction: column
+    gap: variables.$spacing-md
+
+.forms-desenvolvimento
+    display: flex
+    flex-wrap: wrap
+    gap: variables.$spacing-sm
+
+.task-list
+    display: flex
+    padding: variables.$spacing-md
+    justify-content: space-between
+    list-style: none
+    border-radius: variables.$spacing-xs
+    border: 2px solid variables.$color-line-border
+
+    .info-task
+        display: flex
+        flex-direction: column
+        gap: variables.$spacing-md
+    .date-group
+        display: flex
+        gap: variables.$spacing-md

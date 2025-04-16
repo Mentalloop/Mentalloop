@@ -12,7 +12,7 @@ export default factories.createCoreController('api::colaborador.colaborador', ({
 
         const colaborador = await strapi.query('api::colaborador.colaborador').findOne({
             where: { email },
-            populate: { empresa: true }, // Popula a relação com a empresa
+            populate: { empresa: true, tasks: true }, // Popula a relação com a empresa e tasks
         });
 
         if (!colaborador) {
@@ -62,6 +62,7 @@ export default factories.createCoreController('api::colaborador.colaborador', ({
                 populate: {
                     supervisor: true,
                     departamento: true,
+                    tasks: true,
                 },
             });
 
@@ -70,4 +71,42 @@ export default factories.createCoreController('api::colaborador.colaborador', ({
             return ctx.unauthorized('Token inválido');
         }
     },
+
+    async findLoggedUserTasks(ctx: Context) {
+        const token = ctx.request.headers.authorization?.split(' ')[1];
+    
+        if (!token) {
+            return ctx.unauthorized('Token não fornecido');
+        }
+    
+        try {
+            const decoded = jwt.verify(
+                token,
+                strapi.config.get('plugin.users-permissions.jwtSecret')
+            ) as jwt.JwtPayload;
+    
+            const colaboradorId = decoded?.id; // Recupera o ID do colaborador do token
+    
+            if (!colaboradorId) {
+                return ctx.unauthorized('Colaborador não encontrado no token');
+            }
+    
+            // Busca o colaborador logado e popula suas tasks
+            const colaborador = await strapi.db.query('api::colaborador.colaborador').findOne({
+                where: { id: colaboradorId },
+                populate: {
+                    tasks: true, // Popula as tasks relacionadas
+                },
+            });
+    
+            if (!colaborador) {
+                return ctx.notFound('Colaborador não encontrado');
+            }
+    
+            ctx.send({ colaborador });
+        } catch (error) {
+            console.error(error);
+            return ctx.unauthorized('Token inválido');
+        }
+    },    
 }));

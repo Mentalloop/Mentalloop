@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import '../styles/pages/login.sass'; // Importar o arquivo SASS
@@ -10,8 +10,16 @@ const Login = () => {
   const [senha, setSenha] = useState('');
   const [userType, setUserType] = useState('empresa'); // Estado para tipo de usuário
   const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (response === 'Login realizado com sucesso!') {
+      setEmail('');
+      setSenha('');
+    }
+  }, [response]);
 
   const handleLogin = async () => {
     setResponse('');
@@ -21,9 +29,11 @@ const Login = () => {
       return;
     }
 
+    setLoading(true);
+
     const endpoint = userType === 'empresa'
       ? 'http://localhost:1337/api/empresa/login'
-      : 'http://localhost:1337/api/colaborador/login'; // Corrigido endpoint do colaborador
+      : 'http://localhost:1337/api/colaborador/login?populate=tasks'; // Corrigido endpoint do colaborador para retornar tarefas
 
     try {
       const res = await fetch(endpoint, {
@@ -38,11 +48,14 @@ const Login = () => {
         setResponse('Login realizado com sucesso!');
 
         const token = data.token;
-        const empresaId = userType === 'empresa' ? data.empresa.id : data.colaborador.empresaId;
-        const empresaNome = userType === 'empresa' ? data.empresa.nome : data.colaborador.empresaNome;
+        const empresaId = userType === 'empresa' ? data.empresa.id : data.colaborador.empresa.id;
+        const empresaNome = userType === 'empresa' ? data.empresa.nome : data.colaborador.empresa.nome;
+        const colaboradorId = userType === 'colaborador' ? data.colaborador.id : '';
+        const colaboradorNome = userType === 'colaborador' ? data.colaborador.nome : '';
+        const colaboradorTasks = userType === 'colaborador' ? data.colaborador.tasks : [];
 
         // Armazenar no contexto e localStorage
-        login(token, empresaId, empresaNome);
+        login(token, empresaId, empresaNome, colaboradorId, colaboradorNome, colaboradorTasks);
 
         // Redirecionar para outra página
         navigate('/dashboard');
@@ -51,6 +64,8 @@ const Login = () => {
       }
     } catch (error) {
       setResponse(`Erro: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -87,7 +102,9 @@ const Login = () => {
         />
         <p>{response}</p>
         <div className='button-container'>
-          <Button variant="fill" onClick={handleLogin}>Entrar</Button>
+          <Button variant="fill" onClick={handleLogin} disabled={loading}>
+            {loading ? 'Entrando...' : 'Entrar'}
+          </Button>
         </div>   
       </div>
     </div>

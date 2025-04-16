@@ -36,6 +36,12 @@
       "relation": "manyToOne",
       "target": "api::departamento.departamento",
       "inversedBy": "colaboradores"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "colaborador"
     }
   }
 }

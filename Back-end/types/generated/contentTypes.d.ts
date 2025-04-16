@@ -436,6 +436,7 @@ export interface ApiColaboradorColaborador extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::colaborador.colaborador'
     >;
+    tasks: Schema.Attribute.Relation<'oneToMany', 'api::task.task'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -552,6 +553,7 @@ export interface ApiEmpresaEmpresa extends Struct.CollectionTypeSchema {
 export interface ApiTaskTask extends Struct.CollectionTypeSchema {
   collectionName: 'tasks';
   info: {
+    description: '';
     displayName: 'Task';
     pluralName: 'tasks';
     singularName: 'task';
@@ -560,6 +562,10 @@ export interface ApiTaskTask extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    colaborador: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::colaborador.colaborador'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

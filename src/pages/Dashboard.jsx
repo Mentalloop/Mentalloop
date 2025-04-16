@@ -4,7 +4,7 @@ import Menu from '../components/Menu';
 import '../styles/pages/dashboard.sass';
 
 const Dashboard = () => {
-  const { empresaNome } = useContext(AuthContext);
+  const { empresaNome, colaboradorNome } = useContext(AuthContext);
 
   return (
     <div id='dashboard'>
@@ -12,9 +12,9 @@ const Dashboard = () => {
       <div className='main-dashboard'>
         <div className='dashboard-content'>
           <div>
-          <h5>Olá novamente!</h5>
-          <h2>{empresaNome}</h2>
-          {/* Adicione o restante do conteúdo do dashboard aqui */}         
+            <h5>Olá novamente!</h5>
+            <h2>{colaboradorNome || empresaNome}</h2>
+            {/* Adicione o restante do conteúdo do dashboard aqui */}         
           </div>
         </div>
       </div>

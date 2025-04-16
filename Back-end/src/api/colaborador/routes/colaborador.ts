@@ -20,5 +20,14 @@ export default {
         middlewares: [],
       },
     },
+    {
+      method: 'GET',
+      path: '/colaborador/logged-tasks',
+      handler: 'colaborador.findLoggedUserTasks',
+      config: {
+        auth: {}, // Apenas usuários autenticados podem acessar
+      },
+    },
+    
   ],
 };
